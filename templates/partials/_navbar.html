@@ -16,8 +16,8 @@
                 <li class="nav-item {% if 'about' in request.path %}active{% endif %} mr-3">
                     <a class="nav-link" href="{% url 'about' %}">About</a>
                 </li>
-                <li class="nav-item mr-3">
-                    <a class="nav-link" href="#">Featured Listings</a>
+                <li class="nav-item {% if 'listings' in request.path %}active{% endif %} mr-3">
+                    <a class="nav-link" href="{% url 'listings' %}">Featured Listings</a>
                 </li>
             </ul>
 
