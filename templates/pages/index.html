@@ -68,6 +68,7 @@
     <!-- Listings -->
     <section id="listings" class="py-5">
         <div class="container">
+            {% include 'partials/_alerts.html' %}
             <h3 class="text-center mb-3">Latest Listings</h3>
             <div class="row">
                 <!-- Listing 1 -->
@@ -85,7 +86,8 @@
                                     <div class="listing-heading text-center">
                                         <h4 class="text-primary">{{ listing.name }}</h4>
                                         <p>
-                                            <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zip_code }}</p>
+                                            <i class="fas fa-map-marker text-secondary"></i> {{ listing.city }} {{ listing.state }}, {{ listing.zip_code }}
+                                        </p>
                                     </div>
                                     <hr>
                                     <div class="row py-2 text-secondary">
@@ -116,7 +118,8 @@
                                         </div>
                                     </div>
                                     <hr>
-                                    <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More Info</a>
+                                    <a href="{% url 'listing' listing.id %}" class="btn btn-primary btn-block">More
+                                        Info</a>
                                 </div>
                             </div>
                         </div>
