@@ -146,3 +146,9 @@ MESSAGE_TAGS = {
     messages.SUCCESS: 'success',
 }
 
+#Email SMTP config
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '15855f5ccc165e'
+EMAIL_HOST_PASSWORD = '11adf19a28b367'
+EMAIL_PORT = '2525'
+

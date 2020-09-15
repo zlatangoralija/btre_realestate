@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import Contact
+from django.core.mail import BadHeaderError, send_mail
+from django.http import HttpResponse, HttpResponseRedirect
 
 def contact(request):
     if request.method == 'POST':
@@ -34,5 +36,17 @@ def contact(request):
 
         contact.save()
 
+        try:
+            send_mail(
+                'Property listing inquiry',
+                'There has been an inquiry for ' + listing + '. Sing in to see more details!',
+                email,
+                [realtor_email],
+                fail_silently=False
+            )
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+
         messages.success(request, 'Your request has been submitted. Realtor will get back to you soon')
         return redirect('/listings/' + listing_id)
+
