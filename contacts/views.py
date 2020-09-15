@@ -13,6 +13,14 @@ def contact(request):
         message = request.POST['message']
         realtor_email = request.POST['realtor_email']
 
+        #Check if user already submitted inquiry
+        if request.user.is_authenticated:
+            auth_user_id = request.user.id
+            has_inquiry = Contact.objects.all().filter(listing_id=listing_id, user_id=auth_user_id)
+            if has_inquiry:
+                messages.error(request, 'Your already submitted inquiry for this listing!')
+                return redirect('/listings/' + listing_id)
+
         contact = Contact(
             listing_id=listing_id,
             listing=listing,
